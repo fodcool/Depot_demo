@@ -38,8 +38,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to product_url(Product.last)
   end
 
-  # ...
-
   test "should show product" do
     get product_url(@product)
     assert_response :success
@@ -55,7 +53,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to product_url(@product)
   end
 
-  # ...
+
+  test "购物车中的产品无法被删除" do
+    assert_difference('Product.count', 0) do
+      delete product_url(products(:two))
+    end
+  end
 
   test "should destroy product" do
     assert_difference('Product.count', -1) do
