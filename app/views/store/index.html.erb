@@ -11,7 +11,7 @@
   <% @products.each do |product| %>
     <% cache product do %>
       <div class="entry">
-        <%= image_tag(product.image_url) %>
+        <%= image_tag product.image_url, id: "#{product.id}", class: "product_image" %>
         <h3><%= product.title %></h3>
         <%= sanitize(product.description) %>
         <div class="price_line">
@@ -22,3 +22,16 @@
     <% end %>
   <% end %>
 <% end %>
+
+<script>
+$(".product_image").click(function() {
+  product_id = $(this).attr("id")
+  $.post("/line_items",
+    {
+      product_id: product_id,
+    },
+    function(){
+      console.log("add cart successful")
+    })
+})
+</script>
