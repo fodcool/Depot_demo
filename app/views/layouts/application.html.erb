@@ -16,12 +16,18 @@
     </div>
     <div id="columns">
       <div id="side">
+        <% if @cart %>
+          <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+            <%= render @cart %>
+          <% end %>
+        <% end %>
+
         <ul>
           <li id="time_now"><a><%= format(Time.now) %></a></li>
-          <li><a href="http://www....">Home</a></li>
-          <li><a href="http://www..../faq">Questions</a></li>
-          <li><a href="http://www..../news">News</a></li>
-          <li><a href="http://www..../contact">Contact</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="">Questions</a></li>
+          <li><a href="">News</a></li>
+          <li><a href="">Contact</a></li>
         </ul>
       </div>
       <div id="main">
