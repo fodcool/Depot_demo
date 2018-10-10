@@ -2,7 +2,7 @@
 
 <h1>
   Your Pragmatic Catalog
-  <% if @index_views > 5 %>
+  <% if @index_views && @index_views > 5 %>
     <span style="float: right;">访问量：<%= @index_views %> </span>
   <% end %>
 </h1>
